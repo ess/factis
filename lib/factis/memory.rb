@@ -1,5 +1,3 @@
-require 'awesome_print'
-
 module Factis
   class Memory
 
@@ -12,7 +10,7 @@ module Factis
       @facts
     end
 
-    def self.remember(fact, content)
+    def self.memorize(fact, content)
       init_memory! if @facts.nil?
       @facts[fact] = content
     end

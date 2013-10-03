@@ -3,3 +3,6 @@
 /tmp
 *~
 *.swp
+/pkg
+/bin
+Gemfile.lock
