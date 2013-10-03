@@ -82,6 +82,9 @@ recall_fact(:some_foo)
 
 ## Contributing ##
 
+Do you use git-flow? I sure do. Please base anything you do off of the develop
+branch.
+
 1. Fork it.
 2. Perform some BDD magic. Seriously. Be testing.
 3. Submit a pull request.
