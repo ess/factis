@@ -85,7 +85,7 @@ recall_fact(:some_foo)
 There are two sides of this story, really:
 
 * It's generally accepted that being able to track things over the course of an
-  indempotent test (a user's email address, the number of stars in the known
+  idempotent test (a user's email address, the number of stars in the known
   galaxy, etc) makes it easier to write tests. Rather than thinking "my email
   address is user@example.com" repeatedly, you can just accept that you have
   an email address.
