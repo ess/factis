@@ -18,10 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Factis::VERSION
 
-  gem.add_dependency 'awesome_print'
-  gem.add_development_dependency 'cucumber'
-  #gem.add_development_dependency 'rspec-core'
-  #gem.add_development_dependency 'rspec-expectations'
-  #gem.add_development_dependency 'rspec-mocks'
   gem.add_development_dependency 'rspec'
 end
