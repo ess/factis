@@ -80,6 +80,12 @@ recall_fact(:some_foo)
   => #<Foo:0x007ffd84394728>
 ```
 
+## Contributing ##
+
+1. Fork it.
+2. Perform some BDD magic. Seriously. Be testing.
+3. Submit a pull request.
+
 ## So, Uh, Why? ##
 
 There are two sides of this story, really:
@@ -105,3 +111,7 @@ you tell it to remember and recalls them at your request. There is a generator
 to get you up and running with Cucumber, but you should be able to use it with
 just about any test framework that allows you to extend the global namespace
 (a-la `World(Factis)`).
+
+## License ##
+
+MIT License. Copyright 2013 Ess
