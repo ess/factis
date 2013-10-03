@@ -39,7 +39,7 @@ require 'factis/cucumber'
 ```
 
 This gets you ready to use the DSL. Additionally, it forces Factis to forget
-everything that you have told it to remember after each scenario. Because stale
+everything that you have told it to memorize after each scenario. Because stale
 state information from one scenario to the next will make you a very sad panda.
 
 ## How Do I Use This Thing? ##
@@ -49,8 +49,8 @@ That being the case, I'm going to use terminology from that side of the
 experience. Here's everything that World gets when you use Factis.
 
 ```ruby
-# Let's remember that my brother, Joe, just loves pie.
-remember_fact("What does Joe love?", "Joe loves pie.")
+# Let's memorize that my brother, Joe, just loves pie.
+memorize_fact("What does Joe love?", "Joe loves pie.")
 
 # Hey Factis, what does Joe love?
 recall_fact("What does Joe love?")
@@ -78,7 +78,7 @@ class Foo
 end
 
 # The content can be pretty much anything.
-remember_fact(:some_foo, Foo.new)
+memorize_fact(:some_foo, Foo.new)
 
 # What's a foo?
 recall_fact(:some_foo)
@@ -115,7 +115,7 @@ so this thing got thrown together.
 ## Okay, So What's So Great About It? ##
 
 Not much, really. It's really just a simple DSL that hides away the things that
-you tell it to remember and recalls them at your request. There is a generator
+you tell it to memorize and recalls them at your request. There is a generator
 to get you up and running with Cucumber, but you should be able to use it with
 just about any test framework that allows you to extend the global namespace
 (a-la `World(Factis)`).
