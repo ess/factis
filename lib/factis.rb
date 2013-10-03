@@ -1,3 +1,5 @@
+require 'factis/memory'
+
 module Factis
 
   def clear_all_facts!
