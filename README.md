@@ -54,14 +54,18 @@ remember_fact("What does Joe love?", "Joe loves pie.")
 
 # Hey Factis, what does Joe love?
 recall_fact("What does Joe love?")
+  => "Joe loves pie."
 
 # That's not very interesting. Let's forget about it.
 forget_fact("What does Joe love?")
 
 # Wait, what does Joe love again?
 recall_fact("What does Joe love?")
-  => Trying to recall an unkown fact: 'What does Joe love?' (RuntimeError)
+  => Trying to recall an unknown fact: 'What does Joe love?' (RuntimeError)
 
+# Just to make sure it's really forgotten ...
+forget_fact("What does Joe love?")
+  => Trying to forget an unknown fact: 'What does Joe love?' (RuntimeError)
 # Let's just forget everything.
 clear_all_facts!
 
@@ -80,12 +84,21 @@ recall_fact(:some_foo)
   => #<Foo:0x007ffd84394728>
 ```
 
+## Contributing ##
+
+Do you use git-flow? I sure do. Please base anything you do off of
+[the develop branch](https://github.com/ess/factis/tree/develop).
+
+1. Fork it.
+2. Perform some BDD magic. Seriously. Be testing.
+3. Submit a pull request.
+
 ## So, Uh, Why? ##
 
 There are two sides of this story, really:
 
 * It's generally accepted that being able to track things over the course of an
-  indempotent test (a user's email address, the number of stars in the known
+  idempotent test (a user's email address, the number of stars in the known
   galaxy, etc) makes it easier to write tests. Rather than thinking "my email
   address is user@example.com" repeatedly, you can just accept that you have
   an email address.
@@ -105,3 +118,7 @@ you tell it to remember and recalls them at your request. There is a generator
 to get you up and running with Cucumber, but you should be able to use it with
 just about any test framework that allows you to extend the global namespace
 (a-la `World(Factis)`).
+
+## License ##
+
+MIT License. Copyright 2013 Ess
