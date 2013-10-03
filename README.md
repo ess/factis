@@ -61,8 +61,11 @@ forget_fact("What does Joe love?")
 
 # Wait, what does Joe love again?
 recall_fact("What does Joe love?")
-  => Trying to recall an unkown fact: 'What does Joe love?' (RuntimeError)
+  => Trying to recall an unknown fact: 'What does Joe love?' (RuntimeError)
 
+# Just to make sure it's really forgotten ...
+forget_fact("What does Joe love?")
+  => Trying to forget an unknown fact: 'What does Joe love?' (RuntimeError)
 # Let's just forget everything.
 clear_all_facts!
 
