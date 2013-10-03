@@ -54,6 +54,7 @@ remember_fact("What does Joe love?", "Joe loves pie.")
 
 # Hey Factis, what does Joe love?
 recall_fact("What does Joe love?")
+  => "Joe loves pie."
 
 # That's not very interesting. Let's forget about it.
 forget_fact("What does Joe love?")
