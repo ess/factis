@@ -13,9 +13,9 @@ describe Factis::Memory do
     end
   end
 
-  describe %{.remember} do
+  describe %{.memorize} do
     it %{records a fact when given a name and some content} do
-      memory.remember(fact, content)
+      memory.memorize(fact, content)
       memory.all_facts.keys.include?(fact).should be_true
       memory.all_facts[fact].should == content
     end
@@ -23,7 +23,7 @@ describe Factis::Memory do
 
   describe %{.known_fact?} do
     before(:each) do
-      memory.remember(fact, content)
+      memory.memorize(fact, content)
     end
 
     it %{returns true for known facts} do
@@ -37,7 +37,7 @@ describe Factis::Memory do
 
   describe %{.forget} do
     before(:each) do
-      memory.remember(fact, content)
+      memory.memorize(fact, content)
     end
 
     
@@ -54,7 +54,7 @@ describe Factis::Memory do
 
   describe %{.recall} do
     before(:each) do
-      memory.remember(fact, content)
+      memory.memorize(fact, content)
     end
 
     it %{returns the content of a known fact} do
@@ -77,7 +77,7 @@ describe Factis::Memory do
 
   describe %{.reset!} do
     it %{should clear the memory} do
-      memory.remember(fact, content)
+      memory.memorize(fact, content)
       memory.known_fact?(fact).should be_true
       memory.reset!
       memory.known_fact?(fact).should be_false

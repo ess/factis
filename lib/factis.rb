@@ -10,8 +10,8 @@ module Factis
     Factis::Memory.all_facts
   end
 
-  def remember_fact(fact, content)
-    Factis::Memory.remember(fact, content)
+  def memorize_fact(fact, content)
+    Factis::Memory.memorize(fact, content)
   end
 
   def recall_fact(fact)

@@ -22,15 +22,15 @@ describe Factis do
       end
     end
 
-    describe %{#remember_fact} do
+    describe %{#memorize_fact} do
       it %{stores the provided fact} do
-        Factis::Memory.should_receive(:remember).with(fact, content).and_call_original
-        factis.remember_fact(fact, content)
+        Factis::Memory.should_receive(:memorize).with(fact, content).and_call_original
+        factis.memorize_fact(fact, content)
       end
     end
 
     describe %{#recall_fact} do
-      before(:each) {factis.remember_fact(fact, content)}
+      before(:each) {factis.memorize_fact(fact, content)}
 
       it %{recalls the provided fact if known} do
         Factis::Memory.should_receive(:recall).with(fact).and_call_original
@@ -43,7 +43,7 @@ describe Factis do
     end
 
     describe %{#forget_fact} do
-      before(:each) {factis.remember_fact(fact, content)}
+      before(:each) {factis.memorize_fact(fact, content)}
 
       it %{forgets the provided fact if known} do
         Factis::Memory.should_receive(:forget).with(fact).and_call_original
