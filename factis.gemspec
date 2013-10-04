@@ -10,6 +10,7 @@ Gem::Specification.new do |gem|
     without muddying up the global object space.
   EOD
   gem.homepage      = "http://github.com/ess/factis"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
