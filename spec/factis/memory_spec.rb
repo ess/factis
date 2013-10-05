@@ -19,6 +19,10 @@ describe Factis::Memory do
       memory.all_facts.keys.include?(fact).should be_true
       memory.all_facts[fact].should == content
     end
+
+    it %{returns the content of the fact} do
+      memory.memorize(fact, content).should == content
+    end
   end
 
   describe %{.known_fact?} do
@@ -40,11 +44,13 @@ describe Factis::Memory do
       memory.memorize(fact, content)
     end
 
-    
-
     it %{removes a known fact from memory} do
       memory.forget(fact)
       memory.known_fact?(fact).should be_false
+    end
+
+    it %{returns the content of the fact} do
+      memory.forget(fact).should == content
     end
 
     it %{raises an error when given an unknown fact} do

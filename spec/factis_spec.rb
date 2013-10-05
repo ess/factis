@@ -27,6 +27,10 @@ describe Factis do
         Factis::Memory.should_receive(:memorize).with(fact, content).and_call_original
         factis.memorize_fact(fact, content)
       end
+
+      it %{returns the content of the provided fact} do
+        factis.memorize_fact(fact, content).should == content
+      end
     end
 
     describe %{#recall_fact} do
@@ -49,6 +53,10 @@ describe Factis do
         Factis::Memory.should_receive(:forget).with(fact).and_call_original
         factis.forget_fact(fact)
         factis.all_facts.keys.include?(fact).should_not be_true
+      end
+
+      it %{returns the content of the fact} do
+        factis.forget_fact(fact).should == content
       end
 
       it %{raises an error if the fact is not known} do
