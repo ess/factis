@@ -12,6 +12,9 @@ module Factis
 
     def self.memorize(fact, content)
       init_memory! if @facts.nil?
+      if known_fact?(fact)
+        raise %{Cannot memorize a fact more than once: '#{fact}'}
+      end
       @facts[fact] = content
     end
 
