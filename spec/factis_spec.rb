@@ -15,10 +15,13 @@ describe Factis do
     end
 
     describe %{#all_facts} do
-      it %{returns the contents of the Factis memory core} do
+      it %{returns the entire fact hash} do
         facts = {fact => content}
         Factis::Memory.should_receive(:all_facts).and_return(facts)
-        factis.all_facts.should == facts
+        factis.all_facts.tap do |all_facts|
+          all_facts.should be_a(Hash)
+          all_facts.should == facts
+        end
       end
     end
 
@@ -27,12 +30,16 @@ describe Factis do
         Factis::Memory.should_receive(:memorize).with(fact, content).and_call_original
         factis.memorize_fact(fact, content)
       end
+
+      it %{returns the content of the provided fact} do
+        factis.memorize_fact(fact, content).should == content
+      end
     end
 
     describe %{#recall_fact} do
       before(:each) {factis.memorize_fact(fact, content)}
 
-      it %{recalls the provided fact if known} do
+      it %{returns the fact content if known} do
         Factis::Memory.should_receive(:recall).with(fact).and_call_original
         factis.recall_fact(fact).should == content
       end
@@ -49,6 +56,10 @@ describe Factis do
         Factis::Memory.should_receive(:forget).with(fact).and_call_original
         factis.forget_fact(fact)
         factis.all_facts.keys.include?(fact).should_not be_true
+      end
+
+      it %{returns the content of the fact} do
+        factis.forget_fact(fact).should == content
       end
 
       it %{raises an error if the fact is not known} do

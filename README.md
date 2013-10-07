@@ -51,6 +51,7 @@ experience. Here's everything that World gets when you use Factis.
 ```ruby
 # Let's memorize that my brother, Joe, just loves pie.
 memorize_fact("What does Joe love?", "Joe loves pie.")
+  => "Joe loves pie."
 
 # Hey Factis, what does Joe love?
 recall_fact("What does Joe love?")
@@ -58,6 +59,7 @@ recall_fact("What does Joe love?")
 
 # That's not very interesting. Let's forget about it.
 forget_fact("What does Joe love?")
+  => "Joe loves pie."
 
 # Wait, what does Joe love again?
 recall_fact("What does Joe love?")
@@ -79,6 +81,7 @@ end
 
 # The content can be pretty much anything.
 memorize_fact(:some_foo, Foo.new)
+  => #<Foo:0x007ffd84394728>
 
 # What's a foo?
 recall_fact(:some_foo)
