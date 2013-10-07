@@ -10,8 +10,13 @@ module Factis
       @facts
     end
 
-    def self.memorize(fact, content)
+    def self.memorize(fact, content, options = {})
       init_memory! if @facts.nil?
+      if known_fact?(fact)
+        unless options[:overwrite] == true
+          raise %{Cannot memorize a fact more than once: '#{fact}'}
+        end
+      end
       @facts[fact] = content
     end
 

@@ -7,6 +7,10 @@ describe Factis do
     let(:fact) {"Joe"}
     let(:content) {"likes pie"}
 
+    before(:each) do
+      Factis::Memory.reset!
+    end
+
     describe %{#clear_all_facts!} do
       it %{resets the Factis memory core} do
         Factis::Memory.should_receive(:reset!)
@@ -33,6 +37,20 @@ describe Factis do
 
       it %{returns the content of the provided fact} do
         factis.memorize_fact(fact, content).should == content
+      end
+
+      it %{raises an error if the fact is already known} do
+        factis.memorize_fact(fact, content)
+        lambda {factis.memorize_fact(fact, 'Something else')}.should raise_error
+      end
+    end
+
+    describe %{#indifferently_memorize_fact} do
+      it %{stores the provided fact, even if it's already known} do
+        new_content = 'Something else'
+        factis.memorize_fact(fact, content)
+        lambda {factis.indifferently_memorize_fact(fact, new_content)}.should_not raise_error
+        factis.recall_fact(fact).should == new_content
       end
     end
 
