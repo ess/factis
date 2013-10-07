@@ -45,6 +45,15 @@ describe Factis do
       end
     end
 
+    describe %{#indifferently_memorize_fact} do
+      it %{stores the provided fact, even if it's already known} do
+        new_content = 'Something else'
+        factis.memorize_fact(fact, content)
+        lambda {factis.indifferently_memorize_fact(fact, new_content)}.should_not raise_error
+        factis.recall_fact(fact).should == new_content
+      end
+    end
+
     describe %{#recall_fact} do
       before(:each) {factis.memorize_fact(fact, content)}
 
