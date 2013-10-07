@@ -14,6 +14,10 @@ module Factis
     Factis::Memory.memorize(fact, content)
   end
 
+  def indifferently_memorize_fact(fact, content)
+    Factis::Memory.memorize(fact, content, :overwrite => true)
+  end
+
   def recall_fact(fact)
     Factis::Memory.recall(fact)
   end

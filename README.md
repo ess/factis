@@ -49,8 +49,25 @@ That being the case, I'm going to use terminology from that side of the
 experience. Here's everything that World gets when you use Factis.
 
 ```ruby
-# Let's memorize that my brother, Joe, just loves pie.
+# Let's memorize that my brother, Joe, just loves cake.
+memorize_fact("What does Joe love?", "Joe loves cake.")
+  => "Joe loves cake."
+
+# Wait, I had that wrong. Joe loves pie.
+
 memorize_fact("What does Joe love?", "Joe loves pie.")
+  => Cannot memorize a fact more than once: 'What does Joe love?' (RuntimeError)
+
+# Why does that happen?
+# Er, because we're trying to track state safely, and overwriting states
+# all willy-nilly is kinda unsafe.
+# So, how do I overwrite a known fact?
+# If you want to unsafely track state, you should probably just use global
+# variables. Shooting from the hip never did anybody wrong, after all. Or, you
+# can use indifferently_memorize_fact, which is a bad thing to do.
+
+indifferently_memorize_fact("What does Joe love?", "Joe loves pie.")
+  => "Joe loves pie."
 
 # Hey Factis, what does Joe love?
 recall_fact("What does Joe love?")
@@ -58,6 +75,7 @@ recall_fact("What does Joe love?")
 
 # That's not very interesting. Let's forget about it.
 forget_fact("What does Joe love?")
+  => "Joe loves pie."
 
 # Wait, what does Joe love again?
 recall_fact("What does Joe love?")
@@ -79,6 +97,7 @@ end
 
 # The content can be pretty much anything.
 memorize_fact(:some_foo, Foo.new)
+  => #<Foo:0x007ffd84394728>
 
 # What's a foo?
 recall_fact(:some_foo)
