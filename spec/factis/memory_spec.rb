@@ -7,6 +7,10 @@ describe Factis::Memory do
   let(:fact) {"Joe"}
   let(:content) {"Likes pie"}
 
+  before(:each) do
+    Factis::Memory.reset!
+  end
+
   describe '.all_facts' do
     it 'is a Hash' do
       memory.all_facts.should be_a(Hash)
@@ -22,6 +26,11 @@ describe Factis::Memory do
 
     it %{returns the content of the fact} do
       memory.memorize(fact, content).should == content
+    end
+
+    it %{raises an error when given a known fact} do
+      memory.memorize(fact, content)
+      lambda {memory.memorize(fact, 'Something else')}.should raise_error
     end
   end
 
