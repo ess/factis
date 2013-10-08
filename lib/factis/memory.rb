@@ -1,10 +1,12 @@
 module Factis
+  # This is the workhorse of Factis. It's what does the actual tracking of
+  # facts.
   class Memory
 
     class << self
       private
       def init_memory!
-        @facts = Hash.new
+        @facts ||= Hash.new
       end
     end
 
@@ -13,7 +15,7 @@ module Factis
     # @return [Hash] all facts that have been stored
 
     def self.all_facts
-      init_memory! if @facts.nil?
+      init_memory!
       @facts
     end
 
@@ -30,7 +32,7 @@ module Factis
     #   is not active.
 
     def self.memorize(fact, content, options = {:overwrite => false})
-      init_memory! if @facts.nil?
+      init_memory!
       if known_fact?(fact)
         unless options[:overwrite] == true
           raise %{Cannot memorize a fact more than once: '#{fact}'}
@@ -46,7 +48,7 @@ module Factis
     # @return [Boolean] true if the key is known, false otherwise
 
     def self.known_fact?(fact)
-      init_memory! if @facts.nil?
+      init_memory!
       @facts.keys.include?(fact)
     end
 
@@ -59,7 +61,7 @@ module Factis
     # @raise [RuntimeError] if the key is not in the fact hash
 
     def self.forget(fact)
-      init_memory! if @facts.nil?
+      init_memory!
       unless known_fact?(fact)
         raise %{Trying to forget an unknown fact: '#{fact}'}
       end
@@ -75,7 +77,7 @@ module Factis
     # @raise [RuntimeError] if the key is not in the fact hash
 
     def self.recall(fact)
-      init_memory! if @facts.nil?
+      init_memory!
       unless known_fact?(fact)
         raise %{Trying to recall an unknown fact: '#{fact}'}
       end
@@ -85,7 +87,7 @@ module Factis
     # Clear the entire facts hash
 
     def self.reset!
-      init_memory! if @facts.nil?
+      init_memory!
       @facts.clear
     end
   end

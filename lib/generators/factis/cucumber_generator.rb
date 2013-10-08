@@ -1,5 +1,8 @@
 module Factis
   module Generators
+
+    # This is a Rails generator to add Factis support to Cucumber
+
     class CucumberGenerator < Rails::Generators::Base
       source_root File.expand_path('../../templates', __FILE__)
 
