@@ -174,8 +174,8 @@ so this thing got thrown together.
 
 ## Okay, So What's So Great About It? ##
 
-Not much, really. It's really just a simple DSL that hides away the things that
-you tell it to memorize and recalls them at your request. There is a generator
+Not much, really. It's just a simple DSL that hides away the things that you
+tell it to memorize and recalls them at your request. There is a generator
 to get you up and running with Cucumber, but you should be able to use it with
 just about any test framework that allows you to extend the global namespace
 (a-la `World(Factis)`).
