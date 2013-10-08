@@ -104,6 +104,11 @@ recall_fact(:some_foo)
   => #<Foo:0x007ffd84394728>
 ```
 
+## Formal Documentation ##
+
+The actual library docs can be read
+[over on rubydoc](http://rubydoc.info/gems/factis/frames).
+
 ## Contributing ##
 
 Do you use git-flow? I sure do. Please base anything you do off of

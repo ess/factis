@@ -93,7 +93,7 @@ describe Factis::Memory do
   describe %{.init_memory!} do
     it %{should instantiate a new Hash for the memory} do
       old = memory.all_facts.__id__
-      memory.init_memory!
+      memory.class_eval('init_memory!')
       memory.all_facts.__id__.should_not == old
     end
   end
