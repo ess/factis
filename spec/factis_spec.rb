@@ -1,9 +1,13 @@
 require 'spec_helper'
 require 'factis'
 
+class Dummy
+  extend Factis
+end
+
 describe Factis do
   describe %{DSL} do
-    let(:factis) {Object.new.send(:extend, subject)}
+    let(:factis) {Dummy}
     let(:fact) {"Joe"}
     let(:content) {"likes pie"}
 
