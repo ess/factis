@@ -14,8 +14,12 @@ end
 ```
 ## Using with Rails ##
 
+Included are a couple of generators to help you get rolling with Rails apps.
+
+### Cucumber ###
+
 ```bash
-rails generate factis:install
+rails generate factis:cucumber
 ```
 
 Truth be told, this just installs some example Factis steps and a support file
@@ -29,7 +33,18 @@ one time, and then you should delete it. It's really just an example, and using
 those steps in a feature will make your stakeholders hate you with the fury of
 a thousand burning suns.
 
-## Cucumber ##
+### Rspec ###
+
+```bash
+rails generate factis:rspec
+```
+
+This adds a Factis support file to your spec tree. The default configuration
+is the same of that for Cucumber. It's important to note that Factis is
+brought into Rspec via ```config.include``` so the DSL is available in
+the examples, but not in the overall environment.
+
+## Manual Cucumber ##
 
 So, using Cucumber, but not Rails? Try this!
 
@@ -41,6 +56,27 @@ require 'factis/cucumber'
 This gets you ready to use the DSL. Additionally, it forces Factis to forget
 everything that you have told it to memorize after each scenario. Because stale
 state information from one scenario to the next will make you a very sad panda.
+
+## Manual Rspec ##
+
+So, using Rspec, but not Rails? Try this!
+
+```ruby
+# spec/support/factis.rb
+require 'factis/rspec'
+```
+
+If you're not using an all-inclusive support directory for your specs, you can
+just toss that require into your spec_helper.rb or what have you.
+
+This gets you ready to use the DSL. Additionally, it forces Factis to forget
+everything that you have told it to memorize after each example. Because stale
+state information from one example to the next will make you an increddibly
+depressed platypus.
+
+The DSL methods are injected into Rspec via include, so they're available
+anywhere that example-level helpers are available. Primarily, in examples and
+before/after callbacks.
 
 ## How Do I Use This Thing? ##
 
@@ -138,8 +174,8 @@ so this thing got thrown together.
 
 ## Okay, So What's So Great About It? ##
 
-Not much, really. It's really just a simple DSL that hides away the things that
-you tell it to memorize and recalls them at your request. There is a generator
+Not much, really. It's just a simple DSL that hides away the things that you
+tell it to memorize and recalls them at your request. There is a generator
 to get you up and running with Cucumber, but you should be able to use it with
 just about any test framework that allows you to extend the global namespace
 (a-la `World(Factis)`).

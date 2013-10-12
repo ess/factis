@@ -90,14 +90,6 @@ describe Factis::Memory do
 
   end
 
-  describe %{.init_memory!} do
-    it %{should instantiate a new Hash for the memory} do
-      old = memory.all_facts.__id__
-      memory.class_eval('init_memory!')
-      memory.all_facts.__id__.should_not == old
-    end
-  end
-
   describe %{.reset!} do
     it %{should clear the memory} do
       memory.memorize(fact, content)
