@@ -3,13 +3,13 @@ require File.expand_path('../lib/factis/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Dennis Walters"]
-  gem.email         = ["pooster@gmail.com"]
+  gem.email         = ["dennis@elevatorup.com"]
   gem.summary       = %q{Discretely remember and recall facts in your tests}
   gem.description   = <<-EOD
     Factis is a simple DSL for tracking state and such in your tests
     without muddying up the global object space.
   EOD
-  gem.homepage      = "http://github.com/ess/factis"
+  gem.homepage      = "http://github.com/elevatorup/factis"
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($\)
